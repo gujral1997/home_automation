@@ -38,8 +38,7 @@ void handleRoot() {
   int min = sec / 60;
   int hr = min / 60;
 
-  int brightness = analogRead(A0);
-  brightness = (int)(brightness + 5) / 10; //converting the 0-1024 value to a (approximately) percentage value
+
 
 // Build an HTML page to display on the web-server root address
   snprintf ( html, 1000,
@@ -54,16 +53,14 @@ void handleRoot() {
     </style>\
   </head>\
   <body>\
-    <h1>ESP8266 Wi-Fi Access Point and Web Server Demo</h1>\
+    <h1>Home Automation</h1>\
     <p>Uptime: %02d:%02d:%02d</p>\
-    <p>Brightness: %d%</p>\
     <p>%s<p>\
     <p>This page refreshes every 10 seconds. Click <a href=\"javascript:window.location.reload();\">here</a> to refresh the page now.</p>\
   </body>\
 </html>",
 
     hr, min % 60, sec % 60,
-    brightness,
     ledText
   );
   server.send ( 200, "text/html", html );
